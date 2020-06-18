@@ -5,23 +5,23 @@ export default function (kibana) {
   return new kibana.Plugin({
 
     require: ['elasticsearch'],
-    name: 'kibana-xlsx-import',
+    name: 'kibana-pcap-import',
     uiExports: {
 
       app: {
-        title: 'XLSX Import',
-        description: 'Import XLSX to JSON',
-        main: 'plugins/kibana-xlsx-import/app',
-        url: '/app/kibana-xlsx-import',
+        title: 'pcap Import',
+        description: 'Import PCAP to JSON',
+        main: 'plugins/kibana-pcap-import/app',
+        url: '/app/kibana-pcap-import',
         euiIconType: 'importAction'
       },
 
       uiSettingDefaults: {
-        'kibana-xlsx-import:bulk_package_size': {
+        'kibana-pcap-import:bulk_package_size': {
           value: 1000,
           description: 'The number of json item send in one bulk request'
         },
-        'kibana-xlsx-import:displayed_rows': {
+        'kibana-pcap-import:displayed_rows': {
           value: 5,
           description: 'Number of row displayed in the preview'
         }
