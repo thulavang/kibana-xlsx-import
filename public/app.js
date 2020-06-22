@@ -10,7 +10,7 @@ import PreviewTable from './components/previewTable.js';
 import StepOne from './components/stepOne.js';
 import StepTwo from './components/stepTwo.js';
 import StepThree from './components/stepThree.js';
-import XLSX from 'xlsx';
+import pcap from 'pcap';
 
 import 'ui/autoload/styles';
 import './less/main.less';
@@ -44,10 +44,10 @@ let horizontalSteps = [
   }
 ]
 
-const supportedFileType = ['xlsx', 'csv'];    // Defini les extensions utilisable dans le plugin
+const supportedFileType = ['pcap', 'csv'];    // Defini les extensions utilisable dans le plugin
 
 
-var app = uiModules.get('app/kibana-xlsx-import', []);
+var app = uiModules.get('app/kibana-pcap-import', []);
 
 /*uiRoutes.enable();
 uiRoutes
@@ -68,8 +68,8 @@ app.config(stateManagementConfigProvider =>
 
 function RootController($scope, $element, config) {
   const domNode = $element[0];
-  bulkSize = config.get('kibana-xlsx-import:bulk_package_size');
-  maxDisplayableElement = config.get('kibana-xlsx-import:displayed_rows');
+  bulkSize = config.get('kibana-pcap-import:bulk_package_size');
+  maxDisplayableElement = config.get('kibana-pcap-import:displayed_rows');
 
   // render react to DOM
   ReactDOM.render( <Main steps={horizontalSteps} nextStep={displayStep2}/>, domNode);
@@ -107,7 +107,7 @@ function RootController($scope, $element, config) {
 
 
   function displayStep3(indexName, sheetName, fileName, nbDocument) {
-    //document.getElementById("progress-img").innerHTML = '<img src="../plugins/kibana-xlsx-import/ressources/progress-step3.png"/>'
+    //document.getElementById("progress-img").innerHTML = '<img src="../plugins/kibana-pcap-import/ressources/progress-step3.png"/>'
     horizontalSteps[1].isSelected = false;
     horizontalSteps[1].isComplete = true;
     horizontalSteps[2].isSelected = true;
