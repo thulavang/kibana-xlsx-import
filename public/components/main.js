@@ -44,7 +44,7 @@ const Main = (props) => {
                 </EuiFlexGroup>
               </EuiHeaderSectionItem>
               <EuiHeaderSectionItem>
-                <EuiTitle style={{padding: "12px 5px 5px 15px"}}><h2>XLSX Import</h2></EuiTitle>
+                <EuiTitle style={{padding: "12px 5px 5px 15px"}}><h2>PCAP Import</h2></EuiTitle>
               </EuiHeaderSectionItem>
 
             </EuiHeaderSection>
