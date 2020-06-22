@@ -21,7 +21,7 @@ import {
 
 import PreviewTable from './previewTable.js';
 
-import XLSX from 'xlsx';
+import pcap from 'pcap';
 
 import {
   getHeaderRowWithType,
@@ -66,9 +66,9 @@ class StepOne extends Component {
       reader.onload = async (file) => {
 
         if(getExtension(this.state.fileName)[0] != "csv"){
-          var wb = await XLSX.read(reader.result, {type : 'array', cellDates: true, cellNF:false, cellText:false});
+          var wb = await pcap.read(reader.result, {type : 'array', cellDates: true, cellNF:false, cellText:false});
         } else {
-          var wb = await XLSX.read(reader.result, {type : 'binary'});
+          var wb = await pcap.read(reader.result, {type : 'binary'});
         }
 
         var options = wb.SheetNames.map((s) => ({
@@ -114,12 +114,12 @@ class StepOne extends Component {
     }
 
     if(this.state.workbook.Sheets[item]['!ref'] != undefined) {
-      let range = XLSX.utils.decode_range(this.state.workbook.Sheets[item]['!ref']);
+      let range = pcap.utils.decode_range(this.state.workbook.Sheets[item]['!ref']);
       if(range.e.r > 5) range.e.r = 5; //TODO : use config instead
 
       let columns = getHeaderRowWithType(this.state.workbook.Sheets[item]);
 
-      let items = formatJSON(XLSX.utils.sheet_to_json(this.state.workbook.Sheets[item], {
+      let items = formatJSON(PCAP.utils.sheet_to_json(this.state.workbook.Sheets[item], {
         range: range,
         raw: false,
         dateNF:'YYYY-MM-DD"T"HH:MM:SS'
@@ -172,7 +172,7 @@ class StepOne extends Component {
           <EuiFlexItem grow={false}>
             <EuiFormRow>
               <EuiTitle size="s">
-                <h1>Import your xlsx and csv file to ElasticSearch</h1>
+                <h1>Import your pcap and csv file to ElasticSearch</h1>
               </EuiTitle>
             </EuiFormRow>
 
